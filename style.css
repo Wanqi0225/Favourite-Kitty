@@ -1,0 +1,265 @@
+body, html {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #FFD194, #FF9A9E);
+  background-attachment: fixed; 
+}
+
+h1, h3, p, a {
+    font-family: 'system-ui', sans-serif;
+    color: #e95420;
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 1.2;      
+  font-weight: 800;
+  width: 100%;
+  text-align: center;
+    margin: 16px 0;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #252525;
+  margin:0;
+}
+
+@media (min-width: 768px) { 
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1024px) { 
+  h1 {
+    font-size: 40px;
+  }
+}
+
+
+.container {
+  margin: 30px 20px;
+  position: relative;
+}
+
+.subtitle, .site-title {
+  margin: 0;
+}
+
+.site-title {
+  margin-top: 20px;
+}
+
+.logo-icon {
+  width: 1em;
+  height: 1em;
+  margin-left: 6px;
+  fill: #e95420;
+  flex-shrink: 0;
+}
+
+#card-container {
+  position: relative;        
+  width: 100%;
+  max-width: 420px;                
+  height: 75vh;        
+  perspective: 1000px;       
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 0 auto 20px auto;
+}
+
+#card-container > img {
+  position: absolute;  
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  touch-action: none;         
+  transition: transform 0.3s ease, opacity 0.3s ease; 
+  cursor: grab;                
+  z-index: 1;
+}
+
+#card-container > img:active {
+  cursor: grabbing;
+}
+
+.hint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 420px;
+  margin: 0 auto 20px auto;
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 999;
+  border-radius: 16px;
+  display: flex;            
+  align-items: center;        
+  justify-content: center;   
+  text-align: center;  
+}
+
+.hint.flash {
+  animation: flash 2s ease-in-out 1;
+}
+
+.hint > * {
+  flex: 1;                   
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+}
+
+.hint svg {
+  flex: none;              
+}
+
+.hint > p {
+  color: white;
+}
+
+@keyframes flash {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+#card-buttons {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 24px;
+  z-index: 10;
+}
+
+#card-buttons .btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#card-buttons .like { background-color: #ed5353; }
+#card-buttons .dislike { background-color: #9ca3af; }
+
+#card-buttons .btn:hover { transform: scale(1.08); }
+#card-buttons .btn:active { transform: scale(0.92); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+
+#summary {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#summary h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+}
+
+#liked-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+#liked-list img {
+  width: 90%;    
+  height: auto;  
+  border-radius: 12px;
+  object-fit: cover; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+#liked-list img:hover { transform: scale(1.05); }
+
+#restart-btn {
+  margin-top: 20px;
+  width: 120px;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: #e95420;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+#restart-btn:hover {
+  transform: scale(1.05);
+}
+
+#restart-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+@media screen and (min-width: 600px) {
+  #liked-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #liked-list img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  #liked-list img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #liked-list img {
+    width: 250px;
+    height: 250px;
+
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  #card-container {
+    height: 60vh;
+  }
+  #card-buttons .btn {
+    width: 54px;
+    height: 54px;
+    font-size: 1.8rem;
+  }
+}
+
+
